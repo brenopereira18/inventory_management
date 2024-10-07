@@ -36,23 +36,22 @@ SGE - Marcas
       <tr>
         <th>ID</th>
         <th>Nome</th>
-        <th>Descrição</th>  
+        <th class="col-md-9">Descrição</th>  
         <th>Ações</th>      
       </tr>
     </thead>
     <tbody>
       {% for brand in brands %}
       <tr>
-        <td>
-          <a>
-            {{ brand.id }}
-          </a>
-        </td>
+        <td>{{ brand.id }}</td>
         <td>{{ brand.name }}</td>
-        <td>{{ brand.description }}</td>
+        <td>{{ brand.description|truncatechars:200 }}</td>
         <td>
           <a href="{% url 'brand_detail' brand.id %}" class="btn btn-info btn-sm">
             <i class="bi bi-eye"></i>
+          </a>
+          <a href="{% url 'brand_update' brand.id %}" class="btn btn-warning btn-sm">
+            <i class="bi bi-pencil"></i>
           </a>
         </td>
       </tr>
