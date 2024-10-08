@@ -13,4 +13,5 @@ urlpatterns = [
 
     path('home/', home_view),
     path('', include('brands.urls')),
+    path('', include('categories.urls')),
 ]
