@@ -1,8 +1,10 @@
 from django.db.models import Sum, F
 from django.utils import timezone
 from django.utils.formats import number_format
+from brands.models import Brand
 from products.models import Product
 from outflows.models import Outflow
+from categories.models import Category
 
 
 def get_product_metrics():
@@ -86,3 +88,13 @@ def get_quantity_products_sold_data():
         dates=dates,
         values=quanties,
     )
+
+
+def get_graphic_product_category_metric():
+    categories = Category.objects.all()
+    return {category.name: Product.objects.filter(category=category).count() for category in categories}
+
+
+def get_graphic_product_brand_metric():
+    brands = Brand.objects.all()
+    return {brand.name: Product.objects.filter(brand=brand).count() for brand in brands}

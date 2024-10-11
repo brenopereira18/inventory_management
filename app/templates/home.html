@@ -11,13 +11,13 @@ SGE - Home
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<div class="row mt-4 justify-content-center">
+<div class="row mt-5 justify-content-center">
   <div class="col-md-6 text-center">
-    <h5 class="text-center mb-3">Valor de vendas (últimos 7 dias)</h5>
+    <h5 class="text-center mb-5">Valor de vendas (últimos 7 dias)</h5>
     <canvas id="dailySalesChart"></canvas>
   </div>
   <div class="col-md-6 text-center">
-    <h5 class="text-center mb-3">Quantidade de produtos vendidos</h5>
+    <h5 class="text-center mb-5">Quantidade de produtos vendidos</h5>
     <canvas id="dailyQuantityProductSoldChart"></canvas>
   </div>
 </div>
@@ -59,7 +59,7 @@ SGE - Home
     let ctxDailyQuantityProductSold = document
       .getElementById("dailyQuantityProductSoldChart")
       .getContext("2d");
-     dailyQuantityProductSoldChart = new Chart(ctxDailyQuantityProductSold, {
+    dailyQuantityProductSoldChart = new Chart(ctxDailyQuantityProductSold, {
       type: "bar",
       data: {
         labels: dailyQuantityProductSoldData.dates,
@@ -82,6 +82,66 @@ SGE - Home
       },
     });
   });
+</script>
+
+<div class="row mt-5 justify-content-center">
+  <div class="col-md-6 text-center">
+    <h5 class="mb-5">Produtos por Categoria</h5>
+    <div class="embed-responsive embed-responsive-1by1" style="width: 400px; display: inline-block;">
+      <canvas id="productByCategoryChart" class="embed-reponsive-item"></canvas>
+    </div>
+  </div>
+  <div class="col-md-6 text-center">
+    <h5 class="mb-5">Produtos por Marca</h5>
+    <div style="width: 400px; display: inline-block;">
+      <canvas id="productByBrandChart" class="embed-reponsive-item"></canvas>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    let productCountByCategory = JSON.parse('{{ product_count_by_category|safe }}');
+    let productCountByBrand = JSON.parse('{{ product_count_by_brand|safe }}');
+
+    let ctxCategory = document.getElementById('productByCategoryChart').getContext('2d');
+    let productByCategoryChart = new Chart(ctxCategory, {
+      type: 'doughnut',
+      data: {
+        labels: Object.keys(productCountByCategory),
+        datasets: [{
+          data: Object.values(productCountByCategory),
+          borderWidth: 1
+        }]
+      },
+      options: {
+        plugins: {
+          legend: {
+            display: false
+          },
+        }
+      }
+    });
+
+    let ctxBrand = document.getElementById('productByBrandChart').getContext('2d');
+    let productByBrandChart = new Chart(ctxBrand, {
+      type: 'doughnut',
+      data: {
+        labels: Object.keys(productCountByBrand),
+        datasets: [{
+          data: Object.values(productCountByBrand),
+          borderWidth: 1
+        }]
+      },
+      options: {
+        plugins: {
+          legend: {
+            display: false
+          },
+        }
+      }
+    });
+  });  
 </script>
 
 {% endblock %}
