@@ -16,6 +16,7 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('', views.home, name='home'),
+    path('api/v1/', include('authentication.urls')),
     path('', include('brands.urls')),
     path('', include('categories.urls')),    
     path('', include('suppliers.urls')), 
