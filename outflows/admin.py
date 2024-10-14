@@ -6,4 +6,6 @@ class OutflowAdmin(admin.ModelAdmin):
     list_display = ('product', 'quantity', 'created_at', 'update_at',)
     search_fields = ('product__title',)
 
+
 admin.site.register(models.Outflow, OutflowAdmin)
+

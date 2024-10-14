@@ -58,4 +58,5 @@ class CategoryCreateListAPIView(generics.ListCreateAPIView):
 
 class CategoryRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.Category.objects.all()
-    serializer_class = serializers.CategorySerializer 
+    serializer_class = serializers.CategorySerializer
+ 

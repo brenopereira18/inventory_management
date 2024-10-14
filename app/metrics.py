@@ -14,7 +14,7 @@ def get_product_metrics():
         product.cost_price * product.quantity for product in products
     )
     total_selling_price = sum(
-        product.selling_price * product.quantity for product in products    
+        product.selling_price * product.quantity for product in products
     )
     total_profit = total_selling_price - total_cost_price
 
@@ -98,3 +98,4 @@ def get_graphic_product_category_metric():
 def get_graphic_product_brand_metric():
     brands = Brand.objects.all()
     return {brand.name: Product.objects.filter(brand=brand).count() for brand in brands}
+
