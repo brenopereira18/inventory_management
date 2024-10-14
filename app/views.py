@@ -20,6 +20,5 @@ def home(request):
         'daily_quantity_products_sold_data': json.dumps(daily_quantity_products_sold_data),
         'product_count_by_category': json.dumps(graphic_product_category_metric),
         'product_count_by_brand': json.dumps(graphic_product_brand_metric),
-    }
-    
+    }    
     return render(request, 'home.html', context)

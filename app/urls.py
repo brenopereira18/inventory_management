@@ -4,11 +4,13 @@ from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from . import views
 
+
 def home_view(request):
     return render(
         request,
         'base.html',
     )
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,3 +26,4 @@ urlpatterns = [
     path('', include('outflows.urls')), 
     path('', include('products.urls')), 
 ]
+

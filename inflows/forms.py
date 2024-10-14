@@ -14,8 +14,8 @@ class InflowForm(forms.ModelForm):
             'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
         }
         labels = {
-                'supplier': 'Fornecedor',
-                'product': 'Produto',
-                'quantity': 'Quantidade',
-                'description': 'Descrição',
+            'supplier': 'Fornecedor',
+            'product': 'Produto',
+            'quantity': 'Quantidade',
+            'description': 'Descrição',
         }

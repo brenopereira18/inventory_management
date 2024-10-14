@@ -6,4 +6,5 @@ class InflowsConfig(AppConfig):
     name = 'inflows'
 
     def ready(self):
-        import inflows.signals
+        import inflows.signals  # noqa: F401
+
